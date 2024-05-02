@@ -1,17 +1,17 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const mongoose = require('mongoose')
 const postRouter = require('./routes/Posts')
 require('dotenv').config()
 
-
-
 // middleware
 app.use(express.static('public'))
 app.use(express.json())
+app.use(cors())
 
 // Routers
-app.use('/posts', postRouter)
+app.use('/api/posts', postRouter)
 
 // connect to the db
 const dbLink = process.env.DB_URL
